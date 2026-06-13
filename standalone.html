@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Ultimate Granny</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <!--
+      No-build launcher. An import map lets the browser resolve the bare
+      `import ... from 'three'` used throughout src/ to a CDN copy, so the exact
+      same source runs WITHOUT Vite / npm install. Just serve this folder over
+      http (e.g. `node serve.mjs`) and open it. Requires an internet connection
+      for the CDN below; for fully offline play use `npm run dev` instead.
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas"></canvas>
+      <div id="ui-root"></div>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
