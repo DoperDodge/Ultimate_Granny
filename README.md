@@ -12,6 +12,25 @@ as a **clean, data-driven foundation** so it can grow into something much bigger
 
 ## Quick start
 
+Requires Node 18+.
+
+### Option A — no install (fastest, recommended if `npm install` gives you trouble)
+
+You don't need to install anything; you only need Node and an internet
+connection. From the project folder:
+
+```bash
+node serve.mjs
+```
+
+Then open **http://localhost:8080/** in your browser and click **Start**.
+
+This launches `standalone.html`, which loads Three.js from a CDN via an import
+map and runs the exact same source — no Vite, no `npm install`, no
+`node_modules`.
+
+### Option B — full dev setup (hot reload, offline, production builds)
+
 ```bash
 npm install
 npm run dev      # open the printed http://localhost:5173 URL
@@ -24,7 +43,25 @@ npm run build    # outputs to dist/
 npm run preview  # serve the production build locally
 ```
 
-Requires Node 18+.
+### Troubleshooting `npm install` on Windows
+
+If you see "tarball seems to be corrupted" for many packages, `EPERM` /
+`ENOTEMPTY` on `node_modules`, or `mkdir '\\?'`, it's almost always one of:
+
+- **A bad npm cache.** Reset it to the default and clear it:
+  ```powershell
+  npm config delete cache
+  npm cache clean --force
+  npm cache verify
+  ```
+- **Antivirus or a synced/removable drive locking files.** Put the project on a
+  normal `C:` path that is **not** inside OneDrive, add a Defender exclusion for
+  the folder (or pause real-time protection during install), and close any
+  editor that has the folder open.
+- Then delete a partial install and retry: remove the `node_modules` folder and
+  run `npm install` again.
+
+Or just use **Option A** above — it sidesteps `npm install` entirely.
 
 ---
 
